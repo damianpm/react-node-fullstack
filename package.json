@@ -11,9 +11,9 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\" \"cd ..\\..\\..\\mongodb-3.0.5\\bin && mongod --dbpath \\Users\\jnpm\\Documents\\mongo-data\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\" \"cd ..\\..\\..\\mongodb-3.0.5\\bin && mongod --dbpath \\Users\\jnpm\\Documents\\mongo-data\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "webhook": "./sendgrid_webhook.sh"
+    "webhook": "forever sendgrid_webhook.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,8 +28,11 @@
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
-    "path-parser": "^2.0.2",
+    "path-parser": "^2.1.0",
     "sendgrid": "^5.1.2",
     "stripe": "^4.23.1"
+  },
+  "devDependencies": {
+    "forever": "^0.15.3"
   }
 }
